@@ -1,0 +1,763 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Taryn Setup Guide &middot; CAMBY Ai</title>
+<meta name="description" content="Taryn is a manager for DJs. Set her up on Hermes Agent, write down the facts about your career and your first 20 targets, and turn on the weekday follow up check.">
+<meta name="theme-color" content="#0B0D12">
+<link rel="canonical" href="https://taryn.mikecamby.com">
+<link rel="icon" href="camby-ai-logo-web.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="CAMBY Ai">
+<meta property="og:title" content="Taryn Setup Guide">
+<meta property="og:description" content="Taryn is a manager for DJs. Set her up on Hermes Agent, write down the facts about your career and your first 20 targets, and turn on the weekday follow up check.">
+<meta property="og:url" content="https://taryn.mikecamby.com">
+<meta property="og:image" content="taryn-avatar.jpg">
+<meta property="og:image:alt" content="Taryn, DJ manager at CAMBY Ai">
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="1462">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Taryn Setup Guide">
+<meta name="twitter:description" content="Taryn is a manager for DJs. Set her up on Hermes Agent, write down the facts about your career and your first 20 targets, and turn on the weekday follow up check.">
+<meta name="twitter:image" content="taryn-avatar.jpg">
+<meta name="twitter:image:alt" content="Taryn, DJ manager at CAMBY Ai">
+<style>
+  /* Layout: single column, left-aligned. Gold hairline rules separate numbered
+     sections, mirroring the CAMBY Ai site's "01 / SECTION" structure. */
+  :root {
+    --bg:        #0B0D12;
+    --panel:     #12161E;
+    --panel-2:   #171C26;
+    --line:      #2A2E3A;
+    --line-gold: #4A3B1E;
+    --gold:      #D8AA57;
+    --gold-dim:  #8A6E38;
+    --text:      #F7F3EB;
+    --muted:     #A49B89;
+    --ink:       #17191D;
+    --font-head: Georgia, "Times New Roman", serif;
+    --font-body: Arial, Helvetica, sans-serif;
+    --font-mono: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.65;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 920px;
+    margin: 0 auto;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+
+  h1, h2, h3, h4 { font-family: var(--font-head); font-weight: normal; text-wrap: balance; margin: 0; }
+  h1 { font-size: clamp(38px, 7vw, 68px); line-height: 1.05; letter-spacing: -0.015em; }
+  h2 { font-size: clamp(27px, 4.4vw, 40px); line-height: 1.15; letter-spacing: -0.01em; }
+  h3 { font-size: clamp(19px, 2.4vw, 23px); line-height: 1.3; }
+  h1 em, h2 em { color: var(--gold); font-style: italic; }
+  p { margin: 0; }
+
+  .eyebrow {
+    font-family: var(--font-body);
+    font-size: 11px;
+    letter-spacing: 0.19em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 0;
+  }
+  .eyebrow .sep { color: var(--gold-dim); }
+
+  /* ---------- masthead ---------- */
+  .masthead {
+    border-bottom: 1px solid var(--line);
+    background: var(--panel);
+  }
+  .masthead .wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; flex-wrap: wrap; padding-block: 18px;
+  }
+  .masthead img { width: 168px; height: auto; display: block; }
+  .masthead .tag {
+    font-size: 11px; letter-spacing: 0.19em; text-transform: uppercase;
+    color: var(--muted); border-left: 1px solid var(--line-gold); padding-left: 14px;
+  }
+
+  /* ---------- hero ---------- */
+  .hero .wrap { padding-block: clamp(40px, 7vw, 76px); }
+  .hero-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: clamp(28px, 5vw, 56px); align-items: center; }
+  .hero-copy { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+  .lede { font-size: clamp(16px, 1.9vw, 18.5px); color: var(--muted); max-width: 54ch; }
+  .lede strong { color: var(--text); font-weight: normal; }
+
+  .portrait { position: relative; min-width: 0; }
+  .portrait img { width: 100%; max-width: 100%; height: auto; display: block; border: 1px solid var(--line-gold); }
+  .portrait figcaption {
+    margin-top: 12px; font-size: 11px; letter-spacing: 0.17em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  .portrait figcaption b { color: var(--gold); font-weight: normal; }
+
+  .facts { display: flex; flex-wrap: wrap; gap: 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .fact { flex: 1 1 150px; min-width: 0; padding: 16px 18px 16px 0; }
+  .fact + .fact { border-left: 1px solid var(--line); padding-left: 18px; }
+  .fact dt { font-size: 10.5px; letter-spacing: 0.17em; text-transform: uppercase; color: var(--muted); }
+  .fact dd { margin: 5px 0 0; font-family: var(--font-head); font-size: 21px; color: var(--gold); }
+
+  /* ---------- sections ---------- */
+  section { border-top: 1px solid var(--line); }
+  section .wrap { padding-block: clamp(36px, 5.5vw, 62px); }
+  .sec-head { display: flex; flex-direction: column; gap: 10px; margin-bottom: 26px; }
+  .sec-body { display: flex; flex-direction: column; gap: 20px; max-width: 68ch; }
+  .sec-body p { color: var(--muted); }
+  .sec-body p strong { color: var(--text); font-weight: bold; }
+
+  /* ---------- timeline table ---------- */
+  .scroll-x { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; min-width: 440px; font-size: 15px; }
+  caption {
+    text-align: left; font-size: 11px; letter-spacing: 0.17em; text-transform: uppercase;
+    color: var(--muted); padding-bottom: 12px;
+  }
+  th, td { text-align: left; padding: 13px 16px 13px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-family: var(--font-body); font-size: 10.5px; letter-spacing: 0.17em; text-transform: uppercase; color: var(--gold); font-weight: normal; }
+  td.when { color: var(--gold); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  td.what { color: var(--text); }
+  td.note { color: var(--muted); font-size: 14px; }
+  tr.heavy td.when { color: var(--text); background: var(--panel-2); padding-left: 12px; }
+
+  /* ---------- steps ---------- */
+  .step { display: grid; grid-template-columns: 62px 1fr; gap: 0 22px; padding-block: 30px; border-top: 1px solid var(--line); }
+  .step:first-of-type { border-top: 0; }
+  .step-num { font-family: var(--font-head); font-size: 34px; color: var(--gold-dim); line-height: 1; padding-top: 4px; font-variant-numeric: tabular-nums; }
+  .step-body { min-width: 0; display: flex; flex-direction: column; gap: 14px; }
+  .step-body > p { color: var(--muted); max-width: 62ch; }
+  .step-body h3 em { color: var(--gold); font-style: italic; }
+
+  ul.ticks { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+  ul.ticks li { position: relative; padding-left: 20px; color: var(--muted); max-width: 62ch; }
+  ul.ticks li::before { content: ""; position: absolute; left: 0; top: 10px; width: 8px; height: 1px; background: var(--gold); }
+  ul.ticks li b { color: var(--text); font-weight: bold; }
+
+  /* ---------- code ---------- */
+  .code { border: 1px solid var(--line); background: var(--panel); }
+  .code-top {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 9px 12px; border-bottom: 1px solid var(--line); background: var(--panel-2);
+  }
+  .code-top span { font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+  .copy {
+    font-family: var(--font-body); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase;
+    background: transparent; color: var(--gold); border: 1px solid var(--line-gold);
+    padding: 5px 11px; cursor: pointer;
+  }
+  .copy:hover { background: var(--gold); color: var(--ink); border-color: var(--gold); }
+  .copy:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+  pre { margin: 0; padding: 14px; overflow-x: auto; font-family: var(--font-mono); font-size: 13.5px; line-height: 1.75; color: var(--text); }
+  pre .c { color: var(--gold-dim); }
+  code { font-family: var(--font-mono); font-size: 0.92em; color: var(--gold); }
+
+  /* ---------- callout ---------- */
+  .callout { border-left: 2px solid var(--gold); background: var(--panel); padding: 18px 20px; display: flex; flex-direction: column; gap: 8px; }
+  .callout .k { font-size: 10.5px; letter-spacing: 0.17em; text-transform: uppercase; color: var(--gold); }
+  .callout p { color: var(--muted); max-width: 62ch; }
+
+  /* ---------- guardrails ---------- */
+  .rails { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .rail { background: var(--bg); padding: 20px; display: flex; flex-direction: column; gap: 7px; min-width: 0; }
+  .rail dt { font-family: var(--font-head); font-size: 18px; color: var(--text); }
+  .rail dd { margin: 0; color: var(--muted); font-size: 14.5px; }
+  .rail .val { color: var(--gold); font-family: var(--font-mono); font-size: 13px; }
+
+  /* ---------- cta ---------- */
+  .cta { background: var(--panel); border-top: 1px solid var(--line-gold); }
+  .cta .wrap { padding-block: clamp(40px, 6vw, 68px); display: flex; flex-direction: column; gap: 24px; }
+  .cta-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: clamp(24px, 4vw, 48px); align-items: start; }
+  .contact { border: 1px solid var(--line-gold); padding: 22px; display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+  .contact .row { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+  .contact .row dt { font-size: 10.5px; letter-spacing: 0.17em; text-transform: uppercase; color: var(--muted); }
+  .contact .row dd { margin: 0; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; min-width: 0; }
+  .contact .v { font-family: var(--font-mono); font-size: 14.5px; color: var(--gold); word-break: break-all; }
+  a { color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--line-gold); }
+  a:hover { border-bottom-color: var(--gold); }
+  a:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+  /* ---------- footer ---------- */
+  footer { border-top: 1px solid var(--line); }
+  footer .wrap { padding-block: 34px; display: flex; flex-direction: column; gap: 18px; }
+  footer img.sig { width: 150px; height: auto; opacity: 0.85; }
+  footer p { font-size: 13.5px; color: var(--muted); max-width: 70ch; }
+  .fine { font-size: 12px; color: var(--gold-dim); }
+
+  @media (max-width: 760px) {
+    .hero-grid, .cta-grid { grid-template-columns: 1fr; }
+    .portrait { max-width: 340px; }
+    .step { grid-template-columns: 1fr; gap: 12px; }
+    .step-num { font-size: 26px; padding-top: 0; }
+    .fact + .fact { border-left: 0; padding-left: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <img src="camby-ai-logo-web.png" alt="CAMBY Ai">
+    <div class="tag">Taryn &middot; Setup Guide</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">00 <span class="sep">/</span> DJ management</p>
+        <h1>The software is free.<br><em>Your facts are the work.</em></h1>
+<p class="lede">Taryn is a manager for DJs. Most DJs lose gigs in the admin, not in the booth: the pitch that never got a follow up, the press kit that is two years old, the promoter a friend could have introduced. Taryn keeps one pitch tracker of every venue, promoter and label, drafts the emails, gets each music submission ready, keeps the press kit current, runs the follow ups, and checks who you already know before you pitch cold. You make the music and press send. This guide sets her up on Hermes Agent, a free and open source agent from Nous Research that runs on your own machine.</p>
+<p class="lede">The software is free. The model behind it is not always free, and the real work is writing down the facts about your own career that only you know.</p>
+<p class="fine"><strong>Checked on 2026-11-21.</strong> Commands and limits change. Sources are at the bottom.</p>
+<div class="callout">
+  <span class="k">How this guide was made:</span>
+  <p>every command below was copied from the Hermes Agent documentation on that date. We have not test-run them on a fresh machine. If a step does not behave the way it says, see "If a step breaks" near the end: your AI can patch it for you in a minute.</p>
+</div>
+      </div>
+      <figure class="portrait">
+        <img src="taryn-avatar.jpg" alt="Taryn, DJ manager at CAMBY Ai" style="aspect-ratio:502 / 900; object-fit:cover; object-position:42% center;">
+        <figcaption><b>Taryn</b> &middot; See you on the dance floor</figcaption>
+      </figure>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">01 <span class="sep">/</span> Before you start</p>
+      <h2>The honest timeline.<br><em>The slow part is the facts.</em></h2>
+    </div>
+    <div class="sec-body">
+      <h3>What Taryn does</h3>
+<ul class="ticks">
+  <li>Keeps one pitch tracker: every venue, promoter and label, what you sent, when, and what is due next.</li>
+  <li>Drafts each pitch email from your own facts, so nothing in it is made up.</li>
+  <li>Gets each music submission ready: the right track, the link, and the label's own submission rules.</li>
+  <li>Keeps your press kit current: bio in three lengths, links, photos list and past gigs.</li>
+  <li>Checks who you already know at each room before you pitch cold, and drafts the ask for an intro.</li>
+  <li>Turns your footage notes into bio lines and content ideas.</li>
+  <li>Tells you each weekday which follow ups are due, with a draft for each.</li>
+  <li>Does not send, submit, post or book. You do.</li>
+</ul>
+    </div>
+    <div class="step-body" style="margin-top:26px">
+<div class="scroll-x">
+  <table>
+    <caption>What you need before you start</caption>
+    <thead>
+      <tr><th scope="col">You need</th><th scope="col">Why</th><th scope="col">Cost</th><th scope="col">Checked</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="what">A computer that stays on: macOS, Linux, Windows or WSL2</td>
+        <td class="note">The follow up check only runs while Hermes' gateway is running</td>
+        <td class="note">Yours already</td>
+        <td class="when">2026-11-21</td>
+      </tr>
+      <tr>
+        <td class="what">Git and curl</td>
+        <td class="note">The installer uses them</td>
+        <td class="note">Free</td>
+        <td class="when">2026-11-21</td>
+      </tr>
+      <tr>
+        <td class="what">Hermes Agent</td>
+        <td class="note">Runs Taryn</td>
+        <td class="note">Free, MIT licence</td>
+        <td class="when">2026-11-21</td>
+      </tr>
+      <tr>
+        <td class="what">A model with at least 64,000 tokens of context</td>
+        <td class="note">Hermes rejects smaller models at startup</td>
+        <td class="note">Depends on the provider you pick. Not measured here</td>
+        <td class="when">2026-11-21</td>
+      </tr>
+      <tr>
+        <td class="what">Your links and facts</td>
+        <td class="note">Music links, past gigs, releases, photos, the bio you use now</td>
+        <td class="note">Yours already</td>
+        <td class="when">2026-11-21</td>
+      </tr>
+      <tr>
+        <td class="what">A list of people you know in the scene</td>
+        <td class="note">So she can look for a warm intro before a cold pitch</td>
+        <td class="note">Yours already</td>
+        <td class="when">2026-11-21</td>
+      </tr>
+      <tr>
+        <td class="what">Telegram (optional)</td>
+        <td class="note">To get the follow up check on your phone</td>
+        <td class="note">Free</td>
+        <td class="when">2026-11-21</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p>On a brand new install the setup wizard may offer a "Free, start now" choice that needs no account. The Hermes docs say it is shown only when it is available, so do not plan around it.</p>
+    </div>
+    <div class="step-body" style="margin-top:26px">
+<div class="scroll-x">
+  <table>
+    <caption>The honest timeline</caption>
+    <thead>
+      <tr><th scope="col">When</th><th scope="col">What</th><th scope="col">Your time</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="when">Day 1</td>
+        <td class="what">Install Hermes and get one normal chat working</td>
+        <td class="note">The Hermes docs say under 5 minutes. Allow 30</td>
+      </tr>
+      <tr>
+        <td class="when">Day 1</td>
+        <td class="what">Create Taryn and give her a desk folder</td>
+        <td class="note">20 minutes</td>
+      </tr>
+      <tr>
+        <td class="when">Day 1 to 2</td>
+        <td class="what">Write your artist file and your first 20 targets</td>
+        <td class="note">1 to 2 hours. This is the part that decides everything</td>
+      </tr>
+      <tr>
+        <td class="when">Day 2</td>
+        <td class="what">Turn on the follow up check</td>
+        <td class="note">20 minutes</td>
+      </tr>
+      <tr>
+        <td class="when">Week 1</td>
+        <td class="what">Read the check, send what you approve, tell her what happened</td>
+        <td class="note">10 minutes a day</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p>The slow part is not the install. It is the facts. Taryn can only pitch what is true about you, so the artist file has to be right before the first email is drafted. Start with 20 targets you would be proud to play or sign with, not every club in the country.</p>
+<div class="callout">
+  <span class="k">Two limits to know before you start:</span>
+  <p>She drafts and you send. A pitch from your own inbox, in your own name, gets read. Automated bulk email to venues and labels gets you blocked.</p>
+  <p>Every label and promoter has its own rules for demos. Paste those rules into the tracker and she will follow them. She cannot guess them.</p>
+</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">02 <span class="sep">/</span> The build</p>
+      <h2>Seven steps.<br><em>In this order.</em></h2>
+    </div>
+
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-body">
+        <h3>Install Hermes and get one chat working</h3>
+<p>Do not add anything else until a plain conversation works. The Hermes quickstart is blunt about this, and it is right.</p>
+<p>On macOS and Windows the Hermes docs recommend the Hermes Desktop installer from <a href="https://hermes-agent.nousresearch.com/">https:/<wbr>/<wbr>hermes-agent.nousresearch.com/<wbr></a>. For a command line only install on macOS, Linux or WSL2:</p>
+<div class="code">
+  <div class="code-top"><span>Terminal</span><button class="copy" type="button" data-copy="curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash">Copy</button></div>
+<pre>curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash</pre>
+</div>
+<p>Reload your shell, pick a model, and start a chat:</p>
+<div class="code">
+  <div class="code-top"><span>Terminal</span><button class="copy" type="button" data-copy="source ~/.zshrc&#10;hermes setup&#10;hermes">Copy</button></div>
+<pre>source ~/.zshrc
+hermes setup
+hermes</pre>
+</div>
+<div class="callout">
+  <span class="k">You should see:</span>
+  <p>a welcome banner naming your model, and a reply to a simple question. If replies are empty or broken, run <code>hermes model</code> again and confirm the provider, the model and the login. If anything else looks off, run <code>hermes doctor</code>.</p>
+</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-body">
+        <h3>Create Taryn</h3>
+<p>Every agent in Hermes gets its own profile: its own settings, memory and identity. Never point two agents at the same profile.</p>
+<div class="code">
+  <div class="code-top"><span>Terminal</span><button class="copy" type="button" data-copy="hermes profile create taryn --description &quot;DJ manager. Keeps the pitch tracker for venues, promoters and labels, drafts pitch emails and music submissions, keeps the press kit current, runs follow ups, finds warm intros. Never invents a gig, a number or a quote. The owner sends everything.&quot;">Copy</button></div>
+<pre>hermes profile create taryn --description "DJ manager. Keeps the pitch tracker for venues, promoters and labels, drafts pitch emails and music submissions, keeps the press kit current, runs follow ups, finds warm intros. Never invents a gig, a number or a quote. The owner sends everything."</pre>
+</div>
+<p>Creating the profile also creates a <code>taryn</code> command. Check it:</p>
+<div class="code">
+  <div class="code-top"><span>Terminal</span><button class="copy" type="button" data-copy="taryn chat">Copy</button></div>
+<pre>taryn chat</pre>
+</div>
+<div class="callout">
+  <span class="k">You should see:</span>
+  <p>the same kind of chat as step 1, now running as the <code>taryn</code> profile.</p>
+</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-body">
+        <h3>Give Taryn her identity</h3>
+<p>In Hermes, who an agent is lives in a file called <code>SOUL.md</code> inside that agent's home. For a profile named <code>taryn</code> that is:</p>
+<div class="code">
+  <div class="code-top"><span>~/.hermes/profiles/taryn/SOUL.md</span><button class="copy" type="button" data-copy="~/.hermes/profiles/taryn/SOUL.md">Copy</button></div>
+<pre>~/.hermes/profiles/taryn/SOUL.md</pre>
+</div>
+<p>Hermes creates a starter file there. Replace its contents with the text in "Taryn's instructions" below. Keep it about who she is and how she talks. Your career facts and your rules go in different files, in the next step.</p>
+<div class="callout">
+  <span class="k">You should see:</span>
+  <p>after starting a new <code>taryn chat</code>, she introduces herself as your manager when asked who she is.</p>
+</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-body">
+        <h3>Build her desk: the rules, your facts, the tracker</h3>
+<p>Hermes has a built-in memory, but the docs give it about 2,200 characters. That is a few paragraphs, not a career. So your facts and your pitches live in plain files that Taryn reads and updates.</p>
+<p>Make a folder for her to work from:</p>
+<div class="code">
+  <div class="code-top"><span>Terminal</span><button class="copy" type="button" data-copy="mkdir -p ~/taryn-desk/press-kit ~/taryn-desk/drafts ~/taryn-desk/footage">Copy</button></div>
+<pre>mkdir -p ~/taryn-desk/press-kit ~/taryn-desk/drafts ~/taryn-desk/footage</pre>
+</div>
+<p>Then add three files. Hermes loads <code>AGENTS.md</code> from the folder you start a chat in, and Taryn reads and updates the others as she works.</p>
+<p><code>~/taryn-desk/AGENTS.md</code>, the rules:</p>
+<div class="code">
+  <div class="code-top"><span>~/taryn-desk/AGENTS.md</span><button class="copy" type="button" data-copy="# How Taryn works this desk&#10;&#10;- artist.md holds every fact about me. Pitch only what is written there. If a fact is missing, ask me once and write my answer in the file. Never guess.&#10;- tracker.md is the pitch tracker: one row per venue, promoter or label. Update it every time I tell you something was sent or answered.&#10;- network.md lists people I know in the scene and where they are connected. Before any cold pitch, check it for a warm intro and tell me who to ask.&#10;- press-kit/ holds the bio in three lengths (one line, short, full), my links, my photo list and my past gigs. Keep it matching artist.md.&#10;- drafts/ holds every email and submission you write, one file each, named for the target.&#10;- footage/ holds my notes on clips and photos I have. Use them for bio lines and content ideas. Do not describe footage I have not listed.&#10;- A label&#x27;s or promoter&#x27;s own submission rules go in the Notes column. Follow them exactly.&#10;- A follow up is due 7 days after a pitch with no answer. Stop after 2 follow ups and mark the row &quot;resting&quot;.&#10;- Never send, submit, post or book. Draft it, save it in drafts/, and show it to me.&#10;- Never invent a gig, a release, a number, a quote or a name.">Copy</button></div>
+<pre># How Taryn works this desk
+
+- artist.md holds every fact about me. Pitch only what is written there. If a fact is missing, ask me once and write my answer in the file. Never guess.
+- tracker.md is the pitch tracker: one row per venue, promoter or label. Update it every time I tell you something was sent or answered.
+- network.md lists people I know in the scene and where they are connected. Before any cold pitch, check it for a warm intro and tell me who to ask.
+- press-kit/ holds the bio in three lengths (one line, short, full), my links, my photo list and my past gigs. Keep it matching artist.md.
+- drafts/ holds every email and submission you write, one file each, named for the target.
+- footage/ holds my notes on clips and photos I have. Use them for bio lines and content ideas. Do not describe footage I have not listed.
+- A label's or promoter's own submission rules go in the Notes column. Follow them exactly.
+- A follow up is due 7 days after a pitch with no answer. Stop after 2 follow ups and mark the row "resting".
+- Never send, submit, post or book. Draft it, save it in drafts/, and show it to me.
+- Never invent a gig, a release, a number, a quote or a name.</pre>
+</div>
+<p><code>~/taryn-desk/artist.md</code>, your facts:</p>
+<div class="code">
+  <div class="code-top"><span>~/taryn-desk/artist.md</span><button class="copy" type="button" data-copy="# {Artist name}&#10;&#10;- Based in: {city}&#10;- Sound: {two or three plain words, and what a set feels like}&#10;- Links: {music, mixes, social, website}&#10;- Releases: {title, label or self-released, date}&#10;- Past gigs: {venue or event, city, date}&#10;- Residencies or regular nights: {where, how often}&#10;- Press and quotes: {who said it, where, date. Leave blank if none}&#10;- What I want next: {the rooms, festivals and labels I am aiming at}&#10;- What I will not do: {gigs, fees or terms I turn down}&#10;- Booking contact: {the email pitches should come from}">Copy</button></div>
+<pre># {Artist name}
+
+- Based in: {city}
+- Sound: {two or three plain words, and what a set feels like}
+- Links: {music, mixes, social, website}
+- Releases: {title, label or self-released, date}
+- Past gigs: {venue or event, city, date}
+- Residencies or regular nights: {where, how often}
+- Press and quotes: {who said it, where, date. Leave blank if none}
+- What I want next: {the rooms, festivals and labels I am aiming at}
+- What I will not do: {gigs, fees or terms I turn down}
+- Booking contact: {the email pitches should come from}</pre>
+</div>
+<p><code>~/taryn-desk/tracker.md</code>: start it empty with one header line.</p>
+<div class="code">
+  <div class="code-top"><span>~/taryn-desk/tracker.md</span><button class="copy" type="button" data-copy="| Target | Type (venue, promoter, label) | Contact | Warm intro | What was sent | Date sent | Status | Next step and date | Notes |&#10;|---|---|---|---|---|---|---|---|---|">Copy</button></div>
+<pre>| Target | Type (venue, promoter, label) | Contact | Warm intro | What was sent | Date sent | Status | Next step and date | Notes |
+|---|---|---|---|---|---|---|---|---|</pre>
+</div>
+<div class="callout">
+  <span class="k">You should see:</span>
+  <p>when you run <code>taryn chat</code> from inside <code>~/taryn-desk</code> and ask how she tracks a pitch, she answers from <code>AGENTS.md</code> and the tracker's columns.</p>
+</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">05</div>
+      <div class="step-body">
+        <h3>Write your first 20 targets</h3>
+<p>This is the step everybody rushes, and it is the one that makes Taryn useful. Fill in <code>artist.md</code> yourself first. Then run <code>taryn chat</code> from inside <code>~/taryn-desk</code> and send her this:</p>
+<div class="code">
+  <div class="code-top"><span>Send to Taryn</span><button class="copy" type="button" data-copy="Read artist.md and tell me which facts are missing or thin. Ask me for them one at a time and write my answers into the file. Then ask me for 20 targets: the venues, promoters and labels I most want. For each one ask me three things: who the contact is if I know, their submission or booking rules if I know them, and anyone I know who is connected to them. Add one row per target to tracker.md and add the people to network.md. If I do not know something, write &quot;unknown&quot; and move on.">Copy</button></div>
+<pre>Read artist.md and tell me which facts are missing or thin. Ask me for them one at a time and write my answers into the file. Then ask me for 20 targets: the venues, promoters and labels I most want. For each one ask me three things: who the contact is if I know, their submission or booking rules if I know them, and anyone I know who is connected to them. Add one row per target to tracker.md and add the people to network.md. If I do not know something, write "unknown" and move on.</pre>
+</div>
+<div class="callout">
+  <span class="k">You should see:</span>
+  <p>a complete <code>artist.md</code>, 20 rows in <code>tracker.md</code>, and a <code>network.md</code> with the people you named.</p>
+</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">06</div>
+      <div class="step-body">
+        <h3>Schedule the follow up check</h3>
+<p>Hermes has a built-in scheduler. Give the job Taryn's folder so she reads your rules and your tracker when she runs. The folder must be written as a full path.</p>
+<div class="code">
+  <div class="code-top"><span>Terminal</span><button class="copy" type="button" data-copy="hermes -p taryn cron create &quot;weekdays at 10am&quot; \&#10;  &quot;Follow up check. Read tracker.md. List every row where a follow up is due today or overdue, oldest first, with what was sent and when. For each one draft a short follow up and save it in drafts/. Then list any row with no pitch sent yet that has a warm intro in network.md, and say who to ask. Send nothing. Keep it under 200 words.&quot; \&#10;  --workdir /Users/you/taryn-desk \&#10;  --name &quot;Follow up check&quot;">Copy</button></div>
+<pre>hermes -p taryn cron create "weekdays at 10am" \
+  "Follow up check. Read tracker.md. List every row where a follow up is due today or overdue, oldest first, with what was sent and when. For each one draft a short follow up and save it in drafts/. Then list any row with no pitch sent yet that has a warm intro in network.md, and say who to ask. Send nothing. Keep it under 200 words." \
+  --workdir /Users/you/taryn-desk \
+  --name "Follow up check"</pre>
+</div>
+<p>Schedules run from a gateway, and each profile has its own. Start Taryn's, and check that her scheduler is alive:</p>
+<div class="code">
+  <div class="code-top"><span>Terminal</span><button class="copy" type="button" data-copy="taryn gateway start&#10;hermes -p taryn cron status">Copy</button></div>
+<pre>taryn gateway start
+hermes -p taryn cron status</pre>
+</div>
+<p><code>taryn gateway install</code> keeps it running after a restart.</p>
+<p>By default the check is saved on your machine. To get it on your phone, connect Telegram first with <code>hermes gateway setup</code>, then create the job with <code>--deliver telegram</code> added.</p>
+<p>One thing to check on your machine: whether your times come out in your own timezone. Hermes reads the schedule in the profile's <code>timezone:</code> setting. Add <code>--timezone America/Los_Angeles</code> (or your zone) to pin it.</p>
+<div class="callout">
+  <span class="k">You should see:</span>
+  <p>a follow up check waiting for you the next weekday morning.</p>
+</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">07</div>
+      <div class="step-body">
+        <h3>Run your first pitch, by hand</h3>
+<p>Pick one real target from the tracker. From inside <code>~/taryn-desk</code> run <code>taryn chat</code> and send her this:</p>
+<div class="code">
+  <div class="code-top"><span>Send to Taryn</span><button class="copy" type="button" data-copy="Pick the row for {target} in tracker.md. First check network.md and tell me if anyone I know is connected to them. If someone is, draft the short message asking that person for an intro. If no one is, draft the pitch email using only facts from artist.md, and follow the rules in the Notes column. Save the draft in drafts/ and show it to me. Do not send anything.">Copy</button></div>
+<pre>Pick the row for {target} in tracker.md. First check network.md and tell me if anyone I know is connected to them. If someone is, draft the short message asking that person for an intro. If no one is, draft the pitch email using only facts from artist.md, and follow the rules in the Notes column. Save the draft in drafts/ and show it to me. Do not send anything.</pre>
+</div>
+<div class="callout">
+  <span class="k">You should see:</span>
+  <p>one draft in <code>drafts/</code>. Every fact in it is in <code>artist.md</code>, and it follows that target's own rules.</p>
+</div>
+      </div>
+    </div>
+
+    <div class="step-body" style="margin-top:26px">
+      <h3>Taryn's instructions</h3>
+<p>Paste this into <code>~/.hermes/profiles/taryn/SOUL.md</code>. Change the parts in braces.</p>
+<div class="code">
+  <div class="code-top"><span>~/.hermes/profiles/taryn/SOUL.md</span><button class="copy" type="button" data-copy="# Who you are&#10;&#10;You are Taryn. You manage {artist name}, a DJ and producer.&#10;&#10;Your job is to work the rooms so your artist can make the music: every venue, promoter and label is in one pitch tracker, every pitch gets a follow up, the press kit is always current, and no cold pitch goes out when a warm intro was sitting in the network.&#10;&#10;# How you work&#10;&#10;- One tracker. Every pitch, answer and next step is written there the same day.&#10;- You pitch only what is true. Every fact in an email comes from artist.md. You never invent a gig, a release, a number, a quote or a name.&#10;- Before a cold pitch you check who your artist already knows. A warm intro beats a cold pitch.&#10;- You follow each label&#x27;s and promoter&#x27;s own rules for demos and bookings, exactly.&#10;- You keep pitches short: who the artist is, why this room or label, one link, one ask.&#10;- You follow up twice, a week apart, then let it rest. You never nag.&#10;- You draft. You never send, submit, post or book. Your artist does.&#10;- If you do not know something, you ask once and write the answer down.&#10;&#10;# How you talk&#10;&#10;- Fast, confident, a little cheeky. Nightlife energy, never rude.&#10;- Lead with what is due today.&#10;- One line per target: who, what was sent, what you would do next.&#10;- When you ask a question, ask exactly one.">Copy</button></div>
+<pre># Who you are
+
+You are Taryn. You manage {artist name}, a DJ and producer.
+
+Your job is to work the rooms so your artist can make the music: every venue, promoter and label is in one pitch tracker, every pitch gets a follow up, the press kit is always current, and no cold pitch goes out when a warm intro was sitting in the network.
+
+# How you work
+
+- One tracker. Every pitch, answer and next step is written there the same day.
+- You pitch only what is true. Every fact in an email comes from artist.md. You never invent a gig, a release, a number, a quote or a name.
+- Before a cold pitch you check who your artist already knows. A warm intro beats a cold pitch.
+- You follow each label's and promoter's own rules for demos and bookings, exactly.
+- You keep pitches short: who the artist is, why this room or label, one link, one ask.
+- You follow up twice, a week apart, then let it rest. You never nag.
+- You draft. You never send, submit, post or book. Your artist does.
+- If you do not know something, you ask once and write the answer down.
+
+# How you talk
+
+- Fast, confident, a little cheeky. Nightlife energy, never rude.
+- Lead with what is due today.
+- One line per target: who, what was sent, what you would do next.
+- When you ask a question, ask exactly one.</pre>
+</div>
+<p>This persona was written from Taryn's job description for this guide. It is not a copy of the instructions she runs on in our own team.</p>
+    </div>
+
+    <div class="step-body" style="margin-top:26px">
+      <h3>First test</h3>
+<p>Run <code>taryn chat</code> from inside <code>~/taryn-desk</code> and send her this:</p>
+<div class="code">
+  <div class="code-top"><span>First test</span><button class="copy" type="button" data-copy="Which rows in tracker.md have no pitch sent yet? For each one, tell me if there is a warm intro in network.md, and write a one line pitch angle using only facts from artist.md. Then tell me which facts in artist.md are still missing. Send nothing.">Copy</button></div>
+<pre>Which rows in tracker.md have no pitch sent yet? For each one, tell me if there is a warm intro in network.md, and write a one line pitch angle using only facts from artist.md. Then tell me which facts in artist.md are still missing. Send nothing.</pre>
+</div>
+<p>A good answer lists only targets that have a row in <code>tracker.md</code>, takes every fact from <code>artist.md</code>, names a real person from <code>network.md</code> or says there is none, sends nothing, and lists the missing facts instead of filling them in.</p>
+<p>If she invents a gig, a number or a quote, tighten the "never invent" line in <code>SOUL.md</code> and add the real fact to <code>artist.md</code>.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">03 <span class="sep">/</span> When it goes wrong</p>
+      <h2>If a step breaks.<br><em>You do not need us to fix it.</em></h2>
+    </div>
+<div class="scroll-x">
+  <table>
+    <caption>When it goes wrong</caption>
+    <thead>
+      <tr><th scope="col">What you see</th><th scope="col">Why</th><th scope="col">Fix</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="what">Empty or broken replies</td>
+        <td class="note">Model or login is wrong</td>
+        <td class="note"><code>hermes model</code>, then a plain chat before anything else</td>
+      </tr>
+      <tr>
+        <td class="what">She does not know your career</td>
+        <td class="note">The chat was not started in <code>~/taryn-desk</code></td>
+        <td class="note">Start <code>taryn chat</code> from that folder</td>
+      </tr>
+      <tr>
+        <td class="what">She made up a gig, a number or a quote</td>
+        <td class="note">The fact was missing and she guessed</td>
+        <td class="note">Fix <code>artist.md</code>, and tighten the "never invent" line in <code>SOUL.md</code></td>
+      </tr>
+      <tr>
+        <td class="what">A pitch ignores a label's demo rules</td>
+        <td class="note">The rules are not in the tracker</td>
+        <td class="note">Paste them into that row's Notes column</td>
+      </tr>
+      <tr>
+        <td class="what">She pitched cold when you knew someone</td>
+        <td class="note">The person is not in <code>network.md</code></td>
+        <td class="note">Add them, with who they are connected to</td>
+      </tr>
+      <tr>
+        <td class="what">No follow up check</td>
+        <td class="note">Taryn's gateway is not running, or the job is missing its folder</td>
+        <td class="note"><code>hermes -p taryn cron status</code>, <code>taryn gateway start</code>, and recreate the job with <code>--workdir</code></td>
+      </tr>
+      <tr>
+        <td class="what">The check arrives at the wrong hour</td>
+        <td class="note">The schedule is running in another timezone</td>
+        <td class="note">Recreate the job with <code>--timezone</code> set to your zone</td>
+      </tr>
+      <tr>
+        <td class="what">Anything else</td>
+        <td class="note"></td>
+        <td class="note"><code>hermes doctor</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+    <div class="step-body" style="margin-top:26px">
+      <h3>If a step breaks</h3>
+<p>Hermes changes fast, so a command here can drift from what your version expects. You do not need us to fix it. Paste this into Hermes itself, or into Claude or ChatGPT, with the error underneath:</p>
+<div class="code">
+  <div class="code-top"><span>Prompt</span><button class="copy" type="button" data-copy="I am following a setup guide for a DJ manager agent on Hermes Agent. This step failed. Here is the step, the exact command I ran, and the full error. Check the current Hermes Agent docs at https://hermes-agent.nousresearch.com/docs, tell me what changed, and give me the corrected command.">Copy</button></div>
+<pre>I am following a setup guide for a DJ manager agent on Hermes Agent. This step failed. Here is the step, the exact command I ran, and the full error. Check the current Hermes Agent docs at https://hermes-agent.nousresearch.com/docs, tell me what changed, and give me the corrected command.</pre>
+</div>
+<p><code>hermes doctor</code> is worth running first. It catches most setup problems on its own.</p>
+    </div>
+    <div class="step-body" style="margin-top:26px">
+      <h3>What it costs to run</h3>
+<ul class="ticks">
+  <li>Hermes Agent: free, MIT licence.</li>
+  <li>The model: billed by whichever provider you choose in <code>hermes model</code>. Every follow up check and every draft is model usage, and each one reads your tracker. Not measured here, so no number is given.</li>
+  <li>More targets means more to read on every run. That is one more reason to start with 20.</li>
+</ul>
+    </div>
+  </div>
+</section>
+
+<div class="cta">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">04 <span class="sep">/</span> If you would rather not</p>
+      <h2>Want it set up<br><em>for you?</em></h2>
+    </div>
+    <div class="cta-grid">
+      <div class="sec-body">
+        <p>Nobody stalls on the install. They stall on writing down their own facts and deciding which 20 rooms and labels to go after.</p>
+<p>CAMBY Ai sets Taryn up and runs her for you: <a href="https://mikecamby.com">https:/<wbr>/<wbr>mikecamby.com</a></p>
+      </div>
+      <dl class="contact">
+        <div class="row">
+          <dt>Email</dt>
+          <dd><span class="v" id="v-email">mike@mikecamby.com</span>
+            <button class="copy" type="button" data-copy="mike@mikecamby.com">Copy</button></dd>
+        </div>
+        <div class="row">
+          <dt>Text</dt>
+          <dd><span class="v" id="v-phone">747.441.6578</span>
+            <button class="copy" type="button" data-copy="747.441.6578">Copy</button></dd>
+        </div>
+        <div class="row">
+          <dt>Book a time</dt>
+          <dd><a href="https://cal.com/mikecamby">cal.com/mikecamby</a></dd>
+        </div>
+        <div class="row">
+          <dt>The code</dt>
+          <dd><a href="https://github.com/NousResearch/hermes-agent">github.com/NousResearch/hermes-agent</a></dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <img class="sig" src="camby-signature-web.png" alt="Camby">
+    <h3>Credit</h3>
+<p>Taryn runs on <a href="https://github.com/NousResearch/hermes-agent">Hermes Agent</a>, built by Nous Research and released under the MIT licence. Hermes is not ours. This guide is a walkthrough for using it to manage a DJ career. Not affiliated with or endorsed by Nous Research, Telegram, SoundCloud or any venue, promoter or label.</p>
+    <h3>Sources</h3>
+<p>All read on 2026-11-21 from the Hermes Agent repository and its documentation.</p>
+<ul class="ticks">
+  <li><a href="https://github.com/NousResearch/hermes-agent">https:/<wbr>/<wbr>github.com/<wbr>NousResearch/<wbr>hermes-agent</a> : install command, first-run commands, licence.</li>
+  <li><a href="https://hermes-agent.nousresearch.com/docs/getting-started/quickstart">https:/<wbr>/<wbr>hermes-agent.nousresearch.com/<wbr>docs/<wbr>getting-started/<wbr>quickstart</a> : install paths, <code>hermes setup</code>, the 64,000 token minimum, the "Free, start now" option, <code>hermes doctor</code>.</li>
+  <li><a href="https://hermes-agent.nousresearch.com/docs/user-guide/profiles">https:/<wbr>/<wbr>hermes-agent.nousresearch.com/<wbr>docs/<wbr>user-guide/<wbr>profiles</a> : <code>hermes profile create</code>, <code>--description</code>, one profile per agent, the per-profile command.</li>
+  <li><a href="https://hermes-agent.nousresearch.com/docs/user-guide/features/personality">https:/<wbr>/<wbr>hermes-agent.nousresearch.com/<wbr>docs/<wbr>user-guide/<wbr>features/<wbr>personality</a> : <code>SOUL.md</code>, where it lives and what belongs in it.</li>
+  <li><a href="https://hermes-agent.nousresearch.com/docs/user-guide/which-file-does-what">https:/<wbr>/<wbr>hermes-agent.nousresearch.com/<wbr>docs/<wbr>user-guide/<wbr>which-file-does-what</a> : <code>SOUL.md</code> versus <code>AGENTS.md</code>.</li>
+  <li><a href="https://hermes-agent.nousresearch.com/docs/user-guide/features/memory">https:/<wbr>/<wbr>hermes-agent.nousresearch.com/<wbr>docs/<wbr>user-guide/<wbr>features/<wbr>memory</a> : the built-in memory and its size limit.</li>
+  <li><a href="https://hermes-agent.nousresearch.com/docs/user-guide/features/cron">https:/<wbr>/<wbr>hermes-agent.nousresearch.com/<wbr>docs/<wbr>user-guide/<wbr>features/<wbr>cron</a> : <code>cron create</code>, "weekdays at", <code>--workdir</code>, <code>--deliver</code>, <code>--name</code>, <code>--timezone</code>.</li>
+  <li><a href="https://hermes-agent.nousresearch.com/docs/user-guide/messaging">https:/<wbr>/<wbr>hermes-agent.nousresearch.com/<wbr>docs/<wbr>user-guide/<wbr>messaging</a> : <code>hermes gateway setup</code>, <code>start</code>, <code>install</code>, <code>status</code>.</li>
+  <li><a href="https://hermes-agent.nousresearch.com/docs/user-guide/multi-profile-gateways">https:/<wbr>/<wbr>hermes-agent.nousresearch.com/<wbr>docs/<wbr>user-guide/<wbr>multi-profile-gateways</a> : one gateway per profile, <code>&lt;profile&gt; gateway start</code>, <code>hermes -p &lt;profile&gt; cron status</code>.</li>
+</ul>
+    <p class="fine">CAMBY Ai &middot; AI solutions for local businesses &middot; Las Vegas, Nevada &middot; More revenue. Less costs.</p>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll(".copy").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var text = btn.dataset.copy;
+      if (!text) {
+        var block = btn.closest(".code");
+        var pre = block && block.querySelector("pre");
+        if (!pre) return;
+        text = pre.innerText.replace(/[ \t]*#.*$/gm, "").trim();
+      }
+      var done = function () {
+        var prev = btn.textContent;
+        btn.textContent = "Copied";
+        setTimeout(function () { btn.textContent = prev; }, 1400);
+      };
+      try {
+        navigator.clipboard.writeText(text).then(done, function () { select(btn, text); });
+      } catch (e) {
+        select(btn, text);
+      }
+    });
+  });
+
+  function select(btn, text) {
+    var holder = btn.closest(".code") || btn.parentElement;
+    var target = holder && (holder.querySelector("pre") || holder.querySelector(".v"));
+    if (!target) return;
+    var range = document.createRange();
+    range.selectNodeContents(target);
+    var sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+    btn.textContent = "Select and copy";
+    setTimeout(function () { btn.textContent = "Copy"; }, 2200);
+  }
+</script>
+</body>
+</html>
